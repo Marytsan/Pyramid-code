@@ -1,0 +1,22 @@
+def decode(message_file):
+
+    with open(message_file) as file:
+        data = file.readlines()
+
+    mapping = {}
+    for i in data:
+        k, v = i.strip("\n").split()
+        mapping[int(k)] = v.lower()
+
+    max_key = max(mapping.keys())
+
+    step = 2
+    key = 1
+    result = []
+    while key <= max_key:
+        result.append(mapping[key])
+        key = key + step
+        step = step + 1
+
+    return ' '.join(result)
+
